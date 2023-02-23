@@ -1,11 +1,13 @@
-const h1 = document.querySelector("div.hello:first-child h1");
-
-function handleTitleClick(){
-    const clickedClass="clicked";
-    if(h1.classList.contains(clickedClass)){
-        h1.className="";
-    }else{
-        h1.className = clickedClass;
-    }
+const loginForm = document.querySelector("#login-form");
+const loginInput = document.querySelector("#login-form input");
+const greeting = document.querySelector("#greeting");
+const HIDEN_CLASSNAME = "hidden"; 
+function onLoginSubmit(event){
+   event.preventDefault(); 
+    loginForm.classList.add(HIDEN_CLASSNAME);
+    const username=loginInput.value;
+    greeting.innerText = `Hello ${username}`;
+    greeting.classList.remove(HIDEN_CLASSNAME);
 }
-h1.addEventListener("click", handleTitleClick);
+
+loginForm.addEventListener("submit",onLoginSubmit);
